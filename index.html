@@ -32,9 +32,11 @@
     <header class="cabeçalho">
       <div class="container">
         <input type="checkbox" id="menu" class="container_botao" />
-        <label for="menu" class="containet_rotulo">
+        
+        <label for="menu" class="container_rotulo">
           <span class="cabeçalho__menu_hamburguer container__imagem"></span>
         </label>
+
         <ul class="lista_menu">
           <li class="lista_menu_titulo">GÊNEROS</li>
           <li class="lista_menu_item">
@@ -108,7 +110,7 @@
 
         <li class="opções_item"><a href="#" class="opções_link">FAVORITOS</a></li>
         
-        <li class="opções_item"><a href="https://livros.arvore.com.br/biblioteca/ler/livros" class="opções_link">PLATAFORMA LEIA SP</a></li>
+        <li class="opções_item"><a href="#plataforma-leia" class="opções_link">PLATAFORMA LEIA SP</a></li>
 
         <ul class="lista_menu">
           <li class="lista_menu_item">
@@ -167,7 +169,7 @@
 
       <div class="container">
         <a href="index.html" class="container_link"><img src="SRC/img/house2.png" alt="meus perfil" class="container__imagem_casa"/><p class="container_texto">início</p></a>
-        <a href="#" class="container_link"><img src="SRC/img/Usuário.svg" alt="meus perfil" class="container__imagem"/><p class="container_texto">Meu perfil</p></a>
+        <a href="#" class="container_link"><img src="SRC/img/Usuário.svg" alt="meus perfil" class="container__imagem_perfil"/><p class="container_texto">Meu perfil</p></a>
       </div>
     </header>
   
@@ -188,51 +190,106 @@
   </form>
 </section>
 
-    <h2 class="carrosel_titulo Contents" tabindex="0">PLATAFORMA LEIA</h2>
-  
-   <section class="topicos Contents" tabindex="0">
-  <div>
-    <img src="SRC/img/LEIASP 2.png" class="LEIASP" alt="Imagem Leia SP">
-    <h2 class="topicos_titulo">ACESSE OS LIVROS DESSE BIMESTRE DA PLATAFORMA LEIA POR AQUI</h2>
-  </div>
-  <div id="acessibilidade" class="menu_acessibilidade">
-    <button id="batao_acessibilidade" class="btn btn-primary fw-bold rotacao_botao" aria-expanded="false">Acessibilidade</button>
-        <div id="opções_acessibilidade" class="opções_acessibilidade apresenta-lista">
-            <button id="aumentar-fonte" class="btn btn-primary fw-bold" aria-label="Aumentar o tamanho da forte">A+</button>
-            <button id="diminuir-fonte" class="btn btn-primary fw-bold" aria-label="Diminuir o tamanho da forte">A-</button>
-            <button id="alterna-cotraste" class="btn btn-primary fw-bold alterna-cotraste"><i class="bi bi-shadows"></i></button>
-        </div>
-  </div>
 
-    <!-- Card 1 - Ensino Fundamental -->
-    <div class="card_ceter">
-    <div class="card">
-      <div class="card_descrição">
-        <div class="descrição">
-          <h2 class="descrição_titulo_livro">ENSINO FUNDAMENTAL</h2>
+<section class="plataforma-leia topicos" id="plataforma-leia">
+    <div class="interface">
+
+        <header class="leia-cabecalho">
+            <img
+                src="SRC/img/LEIASP 2.png"
+                class="leia-logo"
+                alt="Plataforma Leia SP">
+
+            <h2>Plataforma Leia SP</h2>
+
+            <p>
+                Encontre os livros do bimestre de acordo com seu ano escolar
+                e acesse as obras diretamente pela plataforma.
+            </p>
+        </header>
+
+        <div class="leia-categorias" aria-label="Escolha sua etapa escolar">
+
+            <article class="leia-card card">
+                <h3>Ensino Fundamental</h3>
+                <p>Livros do 6º ao 9º ano.</p>
+
+                <button
+                    type="button"
+                    class="leia-botao"
+                    data-grupo="fundamental">
+                    Ver livros do Fundamental
+                </button>
+            </article>
+
+            <article class="leia-card card">
+                <h3>Ensino Médio</h3>
+                <p>Livros do 1º ao 3º ano.</p>
+
+                <button
+                    type="button"
+                    class="leia-botao"
+                    data-grupo="medio">
+                    Ver livros do Ensino Médio
+                </button>
+            </article>
+
         </div>
-        <img src="SRC/img/MHGB.png" class="descrição_imgem" alt="Livro Ensino Fundamental" />
-      </div>
-      <div class="card_botões text-center">
-        <a href="https://livros.arvore.com.br/biblioteca/ler/livros" class="botões_ancora">Acesse aqui</a>
-      </div>
+
+        <section class="leia-lista" aria-labelledby="titulo-lista-leia">
+
+            <h2 id="titulo-lista-leia">Livros do bimestre</h2>
+
+            <p id="leia-instrucao">
+                Selecione sua etapa escolar ou filtre por ano.
+            </p>
+
+            <div class="leia-filtros">
+                <label for="filtro-ano">Filtrar por ano escolar:</label>
+
+                <select id="filtro-ano">
+                    <option value="todos">Todos os anos</option>
+                    <option value="sexto_ano">6º ano</option>
+                    <option value="setimo_ano">7º ano</option>
+                    <option value="oitavo_ano">8º ano</option>
+                    <option value="nono_ano">9º ano</option>
+                    <option value="primeiro_ano">1º ano do Ensino Médio</option>
+                    <option value="segundo_ano">2º ano do Ensino Médio</option>
+                    <option value="terceiro_ano">3º ano do Ensino Médio</option>
+                </select>
+            </div>
+
+            <p id="leia-resultado" aria-live="polite"></p>
+
+            <ul
+                class="topicos_lista"
+                id="topicos_lista_leia">
+            </ul>
+
+            <p id="leia-vazio" hidden>
+                Nenhum livro encontrado para esse filtro.
+            </p>
+
+            <button
+                type="button"
+                id="leia-mostrar-todos"
+                class="leia-botao leia-botao-secundario">
+                Mostrar todos os livros
+            </button>
+
+        </section>
+
     </div>
-
-    <!-- Card 2 - Ensino Fundamental -->
-    <div class="card">
-      <div class="card_descrição">
-        <div class="descrição">
-          <h2 class="descrição_titulo_livro">ENSINO MÉDIO</h2>
-        </div>
-        <img src="SRC/img/MHGB.png" class="descrição_imgem" alt="Livro Ensino Fundamental" />
-      </div>
-      <div class="card_botões">
-        <a href="https://livros.arvore.com.br/biblioteca/ler/livros" class="botões_ancora">Acesse aqui</a>
-      </div>
-      </div>
-    </div>
-
 </section>
+
+  <div id="acessibilidade" class="menu_acessibilidade">
+    <button id="batao_acessibilidade" class="btn btn-primary fw-bold rotacao_botao " aria-expanded="false">Acessibilidade</button>
+        <div id="opções_acessibilidade" class="opções_acessibilidade apresenta-lista batao_contraste">
+            <button id="aumentar-fonte" class="btn btn-primary fw-bold" aria-label="Aumentar o tamanho da forte batao_contraste">A+</button>
+            <button id="diminuir-fonte" class="btn btn-primary fw-bold" aria-label="Diminuir o tamanho da forte batao_contraste">A-</button>
+            <button id="alterna-cotraste" class="btn btn-primary fw-bold alterna-cotraste batao_contraste"><i class="bi bi-shadows"></i></button>
+        </div>
+  </div>
 
     <section class="carrosel Contents" aria-label="Carrossel de indicações de leitura">
   <h2 class="carrosel_titulo">INDICAÇÃO QUINZENAL PARA LEITURA</h2>
@@ -257,14 +314,6 @@
       
     </div>
     </section>
-
-    <section class="topicos" aria-label="topicos de LIVROS DESSE BIMESTRE DA PLATAFORMA LEIA">
-      <h2 class="topicos_titulo" tabindex="0">LIVROS DESSE BIMESTRE DA PLATAFORMA LEIA</h2>
-      
-      <ul class="topicos_lista" id="topicos_lista_leia">
-          
-      </ul>
-  </section>
 
   <section class="carrosel Contents" aria-label="Carrossel de indicações de leitura" >
       <h2 class="carrosel_titulo">Os livros mais pedidos estão aqui!</h2>
@@ -311,7 +360,7 @@
     <p class="contato">E.E. Profª Maria Helena Gazzi Bonadio</p>
     <p class="contato">Rua Dr. Cássio Salerno, 427 - Ipanema Ville, Sorocaba - SP</p>
     <p class="contato"><i class="bi bi-whatsapp"></i> Telefone (15) 32232758</p>
-    <p class="contato">© 2025. Produzido por Matheus Eduardo</p>
+    <p class="contato">© 2026. Produzido por Matheus Eduardo</p>
   </div>
 </footer>
     

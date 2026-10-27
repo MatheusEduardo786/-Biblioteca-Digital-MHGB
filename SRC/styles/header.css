@@ -1,30 +1,20 @@
-.cabeçalho__menu_hamburguer {
-    width: 54px;
-    height: 54px;
-    background-image: url("../img/Menu.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    display: inline-block;
-}
-
-.container_botao:checked ~ .containet_rotulo > .cabeçalho__menu_hamburguer {
-    background-image: url("../img/Aberto.jpg");
-}
-
-.container_botao:checked ~ .containet_rotulo {
-    background: var(--cor-de-titulo);
-}
-
-.cabeçalho__menu_hamburguer:hover {
-    cursor: pointer;
-}
+/* ==============================
+   CABEÇALHO
+============================== */
 
 .cabeçalho {
     background-color: var(--branco);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    box-sizing: border-box;
 }
 
 .container {
@@ -36,26 +26,75 @@
     padding: 1em;
 }
 
+/* Ícone do menu mobile */
+.cabeçalho__menu_hamburguer {
+    width: 54px;
+    height: 54px;
+    background-image: url("../img/Menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Ícone quando o menu estiver aberto */
+.container_botao:checked ~ .container_rotulo
+.cabeçalho__menu_hamburguer {
+    background-image: url("../img/Aberto.jpg");
+}
+
+/* Esconde o checkbox visualmente, mas mantém acessível */
+.container_botao,
+.opções_botão {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Foco visível ao navegar pelo teclado */
+.container_botao:focus-visible ~ .container_rotulo,
+.opções_botão:focus-visible ~ .opções_rotulo {
+    outline: 3px solid #005fcc;
+    outline-offset: 4px;
+}
+
+/* ==============================
+   MENU MOBILE
+============================== */
+
 .lista_menu {
     display: none;
     position: absolute;
     top: 100%;
-    width: 60vw;
+    left: 0;
+    width: min(85vw, 360px);
+    max-height: 70vh;
+    overflow-y: auto;
+
     background-color: var(--branco);
     border-radius: 0 0 20px 20px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-.container_botao:checked ~ .lista_menu {
+/* Abre o menu mobile */
+.container_botao:checked ~ .container_rotulo
+~ .lista_menu {
     display: block;
-    z-index: 1;
 }
 
-.container_titulo_negrito {
-    color: var(--cor-de-titulo);
-}
-
+/* Título e itens do menu */
 .lista_menu_titulo,
-.lista_menu_item{
+.lista_menu_item {
     padding: 1em;
 }
 
@@ -70,13 +109,30 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
-.container_botao,
-.container_titulo,
+/* Hover */
+.lista_menu_item:hover {
+    background: var(--cor-de-titulo);
+}
+
+.lista_menu_item:hover > .lista_menu_link {
+    -webkit-text-fill-color: var(--branco);
+    color: var(--branco);
+}
+
+/* Título da biblioteca */
+.container_titulo_negrito {
+    color: var(--cor-de-titulo);
+}
+
+.container_titulo {
+    display: none;
+}
+
 .opções_item,
-.container_texto,
-.opções_botão {
+.container_texto {
     display: none;
 }
 
@@ -90,39 +146,40 @@
     background-color: var(--cor-de-titulo);
 }
 
+/* Evita que o conteúdo fique escondido atrás do cabeçalho.
+   Ajuste o valor conforme a altura real do seu cabeçalho. */
+body {
+    padding-top: 80px;
+}
+
+/* ==============================
+   DESKTOP
+============================== */
+
 @media screen and (min-width: 1024px) {
-
-    .container_titulo,
-    .opções_item,
-    .container_texto
-     {
-        display: block;
-    }
-
-    .container_texto {
-        display: none;
-    }
-
-    .container_titulo, .container_titulo_negrito {
-        font-family: var(--font-secudario);
-    }
-
     .container_titulo {
-        font-weight: 700;
         display: block;
+        font-family: var(--font-secudario);
+        font-weight: 700;
         font-size: 1.85em;
     }
 
     .container_titulo_negrito {
+        font-family: var(--font-secudario);
         font-weight: 700;
     }
 
     .opções {
         display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
     }
 
     .opções_item {
-        padding: 0 1em;
+        display: block;
+        padding: 1em;
         text-transform: uppercase;
     }
 
@@ -131,47 +188,48 @@
         color: var(--preto);
     }
 
-    .container_imagem_transparente {
-        display: none;
-    }
-
     .cabeçalho__menu_hamburguer {
         display: none;
     }
 
-    .opções_botão:checked ~ .lista_menu{
+    /* A lista do menu desktop aparece ao marcar o checkbox */
+    .opções_botão:checked ~ .lista_menu {
         display: block;
         width: auto;
-        z-index: 1;
+        min-width: 220px;
+        left: auto;
+        right: 0;
+        z-index: 1001;
     }
 
-    .opções_botão {
-        display: none;
+    .opções_rotulo {
+        cursor: pointer;
     }
 
-    
-    .opções_botão:checked ~ .opções_rotulo > .opções_item {
+    .opções_botão:checked ~ .opções_rotulo .opções_item {
         background: var(--cor-de-titulo);
         color: var(--branco);
     }
 
-    .opções_item {
-        padding: 2em 1em;
+    .lista_menu_item {
+        padding: 1em;
         cursor: pointer;
     }
 
-    .lista_menu_item:hover {
-        background: var(--cor-de-titulo);
-    }
-    .lista_menu_item:hover > .lista_menu_link {
-        -webkit-text-fill-color: var(--branco);
-        text-decoration: none;
+    .container_imagem_transparente {
+        display: none;
     }
 
-
+    .container_texto {
+        display: none;
+    }
 }
 
-@media screen and (min-width: 1728px){
+/* ==============================
+   TELAS GRANDES
+============================== */
+
+@media screen and (min-width: 1728px) {
     .container_link {
         display: flex;
         align-items: center;
@@ -184,9 +242,9 @@
     }
 
     .container_texto:hover {
-        color: var(--cor-de-titulo)
+        color: var(--cor-de-titulo);
     }
-    
+
     .cabeçalho {
         padding: 0 2em;
     }

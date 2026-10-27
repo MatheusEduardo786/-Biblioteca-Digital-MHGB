@@ -1,157 +1,235 @@
-.topicos {
-  background: linear-gradient(135deg, #f0f9ff, #e0ffe0);
-  padding: 3em 1em;
-  border-top: 4px solid var(--cor-de-titulo);
-  text-align: center;
+/* PLATAFORMA LEIA SP */
+
+.plataforma-leia {
+    padding: 60px 0;
+    background: var(--corAzul, #f0faf6);
+    color: var(--cor-texto, #1a1a1a);
 }
 
-.topicos_titulo {
-  text-align: center;
-  font-size: 1.125em;
-  color: var(--cor-de-titulo);
-  margin-bottom: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
+.plataforma-leia > .interface {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+}
+
+.leia-cabecalho {
+    position: static;
+    width: auto;
+    background: transparent;
+    background-image: none;
+    z-index: auto;
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.leia-logo {
+    width: min(220px, 65%);
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.leia-cabecalho h2,
+.leia-lista > h2 {
+    color: var(--cor-secundaria, #284260);
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.leia-cabecalho p,
+.leia-lista > p {
+    line-height: 1.7;
+}
+
+.leia-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.leia-card {
+    background: #fff;
+    padding: 28px;
+    border-radius: 14px;
+    border-left: 5px solid var(--cor-destaque, #34a100);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.leia-card h3 {
+    color: var(--cor-secundaria, #284260);
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.leia-card p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.leia-botao {
+    display: inline-block;
+    padding: 12px 18px;
+    border: 2px solid var(--cor-destaque, #34a100);
+    border-radius: 8px;
+    background: var(--cor-destaque, #34a100);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.leia-botao:hover {
+    background: #267a00;
+    border-color: #267a00;
+    color: #fff;
+}
+
+.leia-botao:focus-visible,
+.topicos_link:focus-visible,
+#filtro-ano:focus-visible {
+    outline: 3px solid #284260;
+    outline-offset: 4px;
+}
+
+.leia-lista {
+    background: #fff;
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.leia-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.leia-filtros label {
+    font-weight: 700;
+}
+
+#filtro-ano {
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #8998a7;
+    border-radius: 8px;
+    background: #fff;
+    color: #1a1a1a;
+    font: inherit;
+}
+
+#leia-resultado {
+    font-weight: 700;
+    margin-bottom: 18px;
 }
 
 .topicos_lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.2em;
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 1000px;
-}
-
-/* MUDAR COR   */
-
-.sexto_ano {
-    background-color: #edf096;
-}
-
-.setimo_ano {
-    background-color: #0dcaf088;
-}
-
-.oitavo_ano {
-    background-color: #f0860d88;
-}
-
-.nono_ano {
-    background-color: #68f00d88;
-}
-
-.primeiro_ano {
-    background-color: #d50df088;
-}
-
-.segundo_ano {
-    background-color: #79797988;
-}
-
-.terceiro_ano {
-    background-color: #ff010188;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
 }
 
 .topicos_item {
-  border: 2px solid var(--cor-de-titulo);
-  padding: 1em;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid rgba(40, 66, 96, 0.25);
+    border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card_botões{
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.topicos_item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-    background: var(--branco);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    margin: 1em;
-    padding: 1em;
+.leia-livro-titulo {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #1a1a1a;
+    overflow-wrap: anywhere;
+    margin: 0;
 }
 
 .topicos_link {
-  text-decoration: none;
-  font-size: 1em;
-  color: #333;
-  font-weight: 600;
-  display: block;
-  height: 100%;
+    display: inline-block;
+    color: #173b20;
+    background: #fff;
+    border: 1px solid #267a00;
+    border-radius: 7px;
+    padding: 10px 14px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-.descrição_imgem{
-    display: none;
+.topicos_link:hover {
+    color: #fff;
+    background: #267a00;
 }
 
-.card_descrição {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5em;
+.sexto_ano {
+    background-color: #f5f3c4;
 }
 
-.card_botões {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
+.setimo_ano {
+    background-color: #d7f3fa;
 }
 
-.LEIASP {
-    width: 25%;
+.oitavo_ano {
+    background-color: #fce5ce;
 }
 
-@media screen and (min-width: 1024px) {
-    .topicos_titulo {
-        font-size: 2em
-    }
-
-    .topicos_link {
-        font-size: 1.5em;
-    }
-    .topicos_item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
-    .topicos_link:hover {
-        color: rgb(255, 255, 255);
-    }
-    .card_ceter {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card {
-        width: 50%;
-        margin: 2em auto;
-    }
-
-    .descrição_imgem{
-        display: block;
-        width: 40%;
-    }
-
-    .card_botões:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    }
+.nono_ano {
+    background-color: #dff3d4;
 }
 
-@media screen and (min-width: 1728px) {
-    .topicos {
-        padding: 1em 20vw;
-    }
-
-    .card {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin-left: 3em;
-    }
-
-    .card_ceter {
-    display: flex;
-    flex-direction: row;
+.primeiro_ano {
+    background-color: #f0def7;
 }
+
+.segundo_ano {
+    background-color: #e8e8e8;
+}
+
+.terceiro_ano {
+    background-color: #f9dddd;
+}
+
+.leia-botao-secundario {
+    background: #fff;
+    color: #284260;
+    border-color: #284260;
+}
+
+.leia-botao-secundario:hover {
+    background: #284260;
+    border-color: #284260;
+}
+
+@media (max-width: 650px) {
+    .leia-categorias,
+    .topicos_lista {
+        grid-template-columns: 1fr;
+    }
+
+    .leia-lista {
+        padding: 20px;
+    }
+
+    .leia-card {
+        padding: 22px;
+    }
+
+    .leia-botao {
+        max-width: 100%;
+    }
 }

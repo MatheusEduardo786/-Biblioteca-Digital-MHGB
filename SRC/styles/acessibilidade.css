@@ -1,41 +1,122 @@
+/* ==============================
+   MENU DE ACESSIBILIDADE
+============================== */
+
 .menu_acessibilidade {
     position: fixed;
-    top:10rem;
+    top: 10rem;
     right: 20px;
     z-index: 1000;
 }
 
 .rotacao_botao {
     transform: rotate(-90deg);
-    transform-origin:right center;
+    transform-origin: right center;
 }
 
 .opções_acessibilidade {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .opções_acessibilidade button {
     margin-bottom: 5px;
 }
 
+/* Menu oculto inicialmente */
 .apresenta-lista {
     display: none;
 }
 
+/* Menu visível quando ativado pelo JavaScript */
+.apresenta-lista.ativo {
+    display: flex;
+}
+
+/* Links de ver mais */
 .ver-mais-modal {
     text-decoration: none;
     color: var(--ver-mais);
 }
 
-/* Alto contraste */
+/* ==============================
+   ALTO CONTRASTE
+   Ativado pela classe no body
+============================== */
+
+body.alterna-cotraste {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+body.alterna-cotraste #acessibilidade button,
+body.alterna-cotraste .opções_acessibilidade button {
+    background-color: #000 !important;
+    color: #ff0 !important;
+    border: 2px solid #ff0 !important;
+    box-shadow: none !important;
+}
+
+/* Destaque ao passar o mouse */
+body.alterna-cotraste #acessibilidade button:hover {
+    background-color: #ff0 !important;
+    color: #000 !important;
+}
+
+/* Foco visível para navegação pelo teclado */
+body.alterna-cotraste #acessibilidade button:focus-visible {
+    outline: 3px solid #fff !important;
+    outline-offset: 3px;
+}
+
+/* Textos e títulos */
+body.alterna-cotraste h1,
+body.alterna-cotraste h2,
+body.alterna-cotraste h3,
+body.alterna-cotraste p,
+body.alterna-cotraste label,
+body.alterna-cotraste li {
+    color: #fff !important;
+}
+
+/* Campos de formulário */
+body.alterna-cotraste input,
+body.alterna-cotraste select,
+body.alterna-cotraste textarea {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid #ff0 !important;
+}
+
+/* Imagens mantêm suas cores originais */
+body.alterna-cotraste img {
+    filter: none !important;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+    .menu_acessibilidade {
+        right: 10px;
+        top: 8rem;
+    }
+}
 
 /* Modo contraste acessível - estilo "buda" */
 .alterna-cotraste .cabeçalho,
 .alterna-cotraste .lista_menu{
     background-color: var(--alto-contraste-fundo) !important; /* fundo bem escuro */
     color: var(--alto-contraste-texto) !important;         /* texto claro */
+}
+
+/* próxima leitura? */
+.alterna-cotraste input,
+.alterna-cotraste select,
+.alterna-cotraste textarea {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffff00 !important;
 }
 
 .alterna-cotraste .lista_menu_link{
@@ -55,19 +136,9 @@
     position: absolute;
 }
 
-/* Botões com destaque */
-.alterna-cotraste .btn {
-    background-color: #333 !important;
-    color: #fff !important;
-    border: 1px solid #fff !important;
-}
-
-/* Cartões e containers */
-.alterna-cotraste .card,
-.alterna-cotraste .container {
-    background: var(--alto-contraste-fundo) !important;
-    color: var(--alto-contraste-texto) !important;
-}
+/* ========================================
+   INDICAÇÃO QUINZENAL PARA LEITURA e Os livros mais pedidos estão aqui! */
+/* ======================================== */
 
 .alterna-cotraste .descrição_titulo_livro {
     color: var(--alto-contraste-texto)
@@ -85,16 +156,6 @@
 .alterna-cotraste .carrosel_titulo {
     color: var(--alto-contraste-link);
     background: linear-gradient(135deg, #282828 0%, #1e211f 100%);
-}
-
-.alterna-cotraste .rodape,
-.alterna-cotraste .contato{
-    background: var(--alto-contraste-fundo);
-    color: var(--alto-contraste-texto);  
-}
-
-.alterna-cotraste .redes-sociais a {
-    color: var(--cor-de-titulo);  
 }
 
 .alterna-cotraste {
@@ -116,15 +177,95 @@
     color: var(--alto-contraste-texto);
 }
 
-/* .alterna-cotraste .btn-close {
-    background-color: #2bba00;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-} */
+/* ========================================
+   ALTO CONTRASTE - PLATAFORMA LEIA
+======================================== */
+
+.alterna-cotraste {
+    --alto-contraste-fundo: #000000;
+    --alto-contraste-texto: #ffffff;
+}
+
+/* Fundo e texto das seções */
+.alterna-cotraste .plataforma-leia,
+.alterna-cotraste .leia-lista,
+.alterna-cotraste .leia-card,
+.alterna-cotraste .topicos {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-color: #ffff00 !important;
+}
+
+/* Títulos */
+.alterna-cotraste .leia-cabecalho h2,
+.alterna-cotraste .leia-lista h2,
+.alterna-cotraste .leia-card h3,
+.alterna-cotraste .topicos_titulo,
+.alterna-cotraste .leia-cabecalho p,
+.alterna-cotraste .leia-lista p {
+    color: #ffffff !important;
+}
+
+/* Cards dos livros */
+.alterna-cotraste .topicos_item {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffff00 !important;
+    box-shadow: none !important;
+}
+
+/* Títulos dos livros */
+.alterna-cotraste .leia-livro-titulo {
+    color: #ffffff !important;
+}
+
+/* Links de acesso aos livros */
+.alterna-cotraste .topicos_link,
+.alterna-cotraste .leia-botao {
+    background: #000000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+/* Hover dos links e botões */
+.alterna-cotraste .topicos_link:hover,
+.alterna-cotraste .leia-botao:hover {
+    background: #ffff00 !important;
+    color: #000000 !important;
+}
+
+/* Filtro de ano */
+.alterna-cotraste #filtro-ano {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffff00 !important;
+}
+
+/* Foco visível para navegação por teclado */
+.alterna-cotraste .topicos_link:focus-visible,
+.alterna-cotraste .leia-botao:focus-visible,
+.alterna-cotraste #filtro-ano:focus-visible {
+    outline: 3px solid #ffffff !important;
+    outline-offset: 4px;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+.alterna-cotraste .rodape,
+.alterna-cotraste .contato{
+    background: var(--alto-contraste-fundo);
+    color: var(--alto-contraste-texto);  
+}
+
+.alterna-cotraste .redes-sociais a {
+    color: var(--cor-de-titulo);  
+}
 
 /* MUDAR COR   */
 
-.alterna-cotraste .sexto_ano {
+/* .alterna-cotraste .sexto_ano {
     background-color: #e6e999;
 }
 
@@ -150,4 +291,4 @@
 
 .alterna-cotraste .terceiro_ano {
     background-color: #f94a6a;
-}
+} */

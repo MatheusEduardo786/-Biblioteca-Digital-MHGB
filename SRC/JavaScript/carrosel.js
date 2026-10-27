@@ -9,7 +9,109 @@ const cMaisPedidosModal = document.getElementById("carrosel_maisPedidos_modal");
 
 // PLATAFORMA LEIA
 
-const topicos_lista = document.getElementById("topicos_lista_leia");
+const listaLeia = document.getElementById("topicos_lista_leia");
+const filtroAno = document.getElementById("filtro-ano");
+const resultadoLeia = document.getElementById("leia-resultado");
+const mensagemVazia = document.getElementById("leia-vazio");
+const botaoMostrarTodos = document.getElementById("leia-mostrar-todos");
+
+const gruposLeia = {
+    fundamental: [
+        "sexto_ano",
+        "setimo_ano",
+        "oitavo_ano",
+        "nono_ano"
+    ],
+    medio: [
+        "primeiro_ano",
+        "segundo_ano",
+        "terceiro_ano"
+    ]
+};
+
+function renderizarLivros(filtro = "todos") {
+    listaLeia.replaceChildren();
+
+    const livrosFiltrados = plataformaLeia.filter((livro) => {
+        if (filtro === "todos") {
+            return true;
+        }
+
+        if (filtro === "fundamental" || filtro === "medio") {
+            return gruposLeia[filtro].includes(livro.color);
+        }
+
+        return livro.color === filtro;
+    });
+
+    livrosFiltrados.forEach((livro) => {
+        const item = document.createElement("li");
+        item.classList.add("topicos_item", livro.color);
+
+        const titulo = document.createElement("h3");
+        titulo.classList.add("leia-livro-titulo");
+        titulo.textContent = livro.topicos_item;
+
+        const link = document.createElement("a");
+        link.classList.add("topicos_link");
+        link.href = livro.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Acessar livro";
+
+        item.append(titulo, link);
+        listaLeia.appendChild(item);
+    });
+
+    resultadoLeia.textContent =
+        `${livrosFiltrados.length} livro(s) encontrado(s).`;
+
+    mensagemVazia.hidden = livrosFiltrados.length !== 0;
+}
+
+// Filtro por ano escolar
+filtroAno.addEventListener("change", () => {
+    renderizarLivros(filtroAno.value);
+});
+
+// Atalhos dos cards
+document.querySelectorAll("[data-grupo]").forEach((botao) => {
+    botao.addEventListener("click", () => {
+        const grupo = botao.dataset.grupo;
+
+        filtroAno.value = "todos";
+        renderizarLivros(grupo);
+
+        document.getElementById("titulo-lista-leia").textContent =
+            grupo === "fundamental"
+                ? "Livros do Ensino Fundamental"
+                : "Livros do Ensino Médio";
+
+        document.getElementById("leia-instrucao").textContent =
+            grupo === "fundamental"
+                ? "Obras disponíveis do 6º ao 9º ano."
+                : "Obras disponíveis do 1º ao 3º ano.";
+
+        document.getElementById("plataforma-leia")
+            .scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// Voltar à lista completa
+botaoMostrarTodos.addEventListener("click", () => {
+    filtroAno.value = "todos";
+
+    document.getElementById("titulo-lista-leia").textContent =
+        "Livros do bimestre";
+
+    document.getElementById("leia-instrucao").textContent =
+        "Selecione sua etapa escolar ou filtre por ano.";
+
+    renderizarLivros();
+});
+
+// Exibir todos os livros ao abrir a página
+renderizarLivros();
 
 // Gerando HTML dinamicamente
 livrosCarrosel.forEach(livro => {
@@ -123,15 +225,6 @@ livrosCarrosel.forEach(livro => {
     
     
     `
-});
-
-plataformaLeia.forEach(leia => {
-  topicos_lista.innerHTML += `
-  <!--° ano  -->
-          <li class="topicos_item ${leia.color}">
-              <a href="${leia.link}" class="topicos_link">${leia.topicos_item}</a>
-          </li>
-  `
 });
 
 // ver mais
