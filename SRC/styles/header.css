@@ -193,12 +193,27 @@ body {
     }
 
     /* A lista do menu desktop aparece ao marcar o checkbox */
+
+    .opções {
+        position: relative;
+    }
+    
     .opções_botão:checked ~ .lista_menu {
         display: block;
-        width: auto;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: auto;
+
+        width: 280px;
         min-width: 220px;
-        left: auto;
-        right: 0;
+        max-width: 85vw;
+        max-height: 70vh;
+        overflow-y: auto;
+
+        background-color: var(--branco);
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         z-index: 1001;
     }
 
